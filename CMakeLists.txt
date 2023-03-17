@@ -223,6 +223,11 @@ ELSE()
   MESSAGE(FATAL_ERROR "Unsupported library type ${CPUINFO_LIBRARY_TYPE}")
 ENDIF()
 ADD_LIBRARY(cpuinfo_internals STATIC ${CPUINFO_SRCS})
+
+# YY.M.D of last upstream commit to main
+set(cpuinfo_VERSION 23.2.14)
+set_target_properties(cpuinfo PROPERTIES VERSION ${cpuinfo_VERSION} SOVERSION ${cpuinfo_VERSION})
+
 CPUINFO_TARGET_ENABLE_C99(cpuinfo)
 CPUINFO_TARGET_ENABLE_C99(cpuinfo_internals)
 CPUINFO_TARGET_RUNTIME_LIBRARY(cpuinfo)
